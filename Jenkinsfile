@@ -16,11 +16,6 @@ pipeline {
       }
     }
 
-   stage('Mutation Tests - PIT') {
-      steps {
-        sh "/opt/maven/bin/mvn org.pitest:pitest-maven:mutationCoverage"
-      }
-    }
 
 stage('Docker Build and Push') {
       steps {
@@ -33,4 +28,11 @@ stage('Docker Build and Push') {
     }
 
  }
+ post {
+     always {
+      junit 'target/surefire-reports/*.xml'
+      jacoco execPattern: 'target/jacoco.exec'
+    }
+}
+
 }
