@@ -27,6 +27,19 @@ stage('Docker Build and Push') {
       }
     }
 
+
+stage('Docker Run') {
+      steps {
+        withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
+          sh 'printenv'
+          sh 'docker -d -p 5552:5552  avisdocker/springhello'
+        }
+      }
+    }
+
+
+
+
  }
  post {
      always {
