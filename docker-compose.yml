@@ -1,0 +1,10 @@
+version: '2'
+services:
+  scp:
+    image: 'avisdocker/scp:new'
+    environment:
+      - "PORT:5552"
+    ports:
+      - "5552:5552"
+    volumes:
+      - ./:/app
