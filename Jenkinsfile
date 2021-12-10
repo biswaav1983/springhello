@@ -21,8 +21,8 @@ stage('Docker Build and Push') {
       steps {
         withDockerRegistry([credentialsId: "docker-hub", url: ""]) {
           sh 'printenv'
-          sh 'docker build -t avisdocker/springhello-app-v1:""$GIT_COMMIT"" .'
-          sh 'docker push avisdocker/springhello-app-v1:""$GIT_COMMIT""'
+          sh 'docker build -t avisdocker/springhello-app-v1 .'
+          sh 'docker push avisdocker/springhello-app-v1'
         }
       }
     }
